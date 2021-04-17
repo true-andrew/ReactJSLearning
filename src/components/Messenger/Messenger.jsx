@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {MessageList} from "./MessageList";
-import {MessageForm} from "./MessageForm";
+import {MessagesList} from "../MessagesList";
+import {MessageForm} from "../MessageForm";
 
 export class Messenger extends Component {
   state = {
@@ -26,7 +26,7 @@ export class Messenger extends Component {
   render() {
     return (
       <div>
-        <MessageList messages={this.state.messages}/>
+        <MessagesList messages={this.state.messages}/>
         <MessageForm onSend={this.addNewMessage}/>
       </div>
     );

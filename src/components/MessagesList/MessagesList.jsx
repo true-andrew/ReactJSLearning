@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types'
-import {Message} from "./Message";
+import {Message} from "../Message";
 
-export class MessageList extends Component {
+export class MessagesList extends Component {
   static propTypes = {
     messages: PropTypes.array.isRequired
   }
