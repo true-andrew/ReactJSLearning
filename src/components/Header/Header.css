@@ -1,0 +1,12 @@
+.header {
+    grid-area: header;
+    background-color: lightskyblue;
+    display: flex;
+    align-items: center;
+}
+
+.main-heading{
+    margin: 0 0 0 1rem;
+    font-family: Roboto, sans-serif;
+    color: white;
+}

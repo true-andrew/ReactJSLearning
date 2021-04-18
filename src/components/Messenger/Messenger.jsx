@@ -7,7 +7,9 @@ import {MessageForm} from "../MessageForm";
 
 export class Messenger extends Component {
   state = {
-    messages: [],
+    messages: [
+      {text: "Hi, I'm Bot", author: "Robot"}
+    ],
   };
 
   addNewMessage = (msg) => {
@@ -23,7 +25,7 @@ export class Messenger extends Component {
 
   render() {
     return (
-      <div>
+      <div className="messenger">
         <MessagesList messages={this.state.messages}/>
         <MessageForm onSend={this.addNewMessage}/>
       </div>

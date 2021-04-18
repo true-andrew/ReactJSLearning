@@ -1,0 +1,20 @@
+.chat-list {
+    grid-area: chat-list;
+    background-color: lightgray;
+
+}
+
+.chat {
+    padding: 5px;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+}
+
+.chat-name {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+.chat-lastMessage{
+    font-family: Roboto, sans-serif;
+}
