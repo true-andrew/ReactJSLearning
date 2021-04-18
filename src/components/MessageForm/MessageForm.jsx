@@ -1,3 +1,5 @@
+import './MessageForm.css'
+
 import React, {Component} from "react";
 import PropTypes from 'prop-types'
 
@@ -19,7 +21,6 @@ export class MessageForm extends Component {
 
       this.setState( {
         text: '',
-        author: '',
       });
     }
   };
@@ -32,11 +33,17 @@ export class MessageForm extends Component {
     });
   };
 
+  handleEnterDown = (event) => {
+    if (event.ctrlKey && event.keyCode === 13) {
+      this.handleClick(event);
+    }
+  };
+
   render() {
     return (
-      <div>
+      <div className="message-form">
         <input name="author" onChange={this.handleInputChange} type="text" value={this.state.author}/><br/>
-        <textarea name="text" onChange={this.handleInputChange} value={this.state.text}/><br/>
+        <textarea name="text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={this.state.text}/><br/>
         <button onClick={this.handleClick}>Отправить сообщение</button>
       </div>
     );

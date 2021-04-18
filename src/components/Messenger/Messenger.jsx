@@ -1,15 +1,13 @@
+import './Messenger.css'
+
 import React, {Component} from "react";
+
 import {MessagesList} from "../MessagesList";
 import {MessageForm} from "../MessageForm";
 
 export class Messenger extends Component {
   state = {
-    messages: [
-      {
-        text: 'First Msg',
-        author: 'Human'
-      },
-    ],
+    messages: [],
   };
 
   addNewMessage = (msg) => {

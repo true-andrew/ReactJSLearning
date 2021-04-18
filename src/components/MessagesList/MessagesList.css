@@ -1,0 +1,21 @@
+.layout {
+    height: 100%;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    background-color: #e2e2e2;
+    height: 50%;
+    width: 100%;
+    padding: 20px;
+    overflow-y: scroll;
+
+}
