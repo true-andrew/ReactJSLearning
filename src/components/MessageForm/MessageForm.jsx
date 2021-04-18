@@ -2,6 +2,8 @@ import './MessageForm.css'
 
 import React, {Component} from "react";
 import PropTypes from 'prop-types'
+import {TextField, Button} from "@material-ui/core";
+import SendIcon from '@material-ui/icons/Send';
 
 export class MessageForm extends Component {
   state = {
@@ -42,9 +44,9 @@ export class MessageForm extends Component {
   render() {
     return (
       <div className="message-form">
-        <input name="author" onChange={this.handleInputChange} type="text" value={this.state.author}/><br/>
-        <textarea name="text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={this.state.text}/><br/>
-        <button onClick={this.handleClick}>Отправить сообщение</button>
+        <TextField label="Author" name="author" onChange={this.handleInputChange} type="text" value={this.state.author}/>
+        <TextField name="text" label="Text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={this.state.text}/>
+        <Button variant="contained" color="primary" endIcon={<SendIcon>send</SendIcon>} onClick={this.handleClick}>Send</Button>
       </div>
     );
   }
