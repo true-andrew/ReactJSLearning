@@ -1,20 +1,25 @@
 import './ChatList.css'
 
 import React, {Component} from "react";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText'
 
 export class ChatList extends Component {
   render() {
     return (
-      <div className="chat-list">
-        <div className="chat">
-          <h1 className="chat-name">First Chat</h1>
-          <p className="lastMessage">empty</p>
-        </div>
-        <div className="chat">
-          <h1 className="chat-name">Second Chat</h1>
-          <p className="chat-lastMessage">empty</p>
-        </div>
-      </div>
-    )
+      <List component="nav" aria-label="contacts">
+        <ListItem button>
+          <ListItemText primary="First Chat" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Second Chat" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Third Chat" />
+        </ListItem>
+      </List>
+    );
   }
 }
+
