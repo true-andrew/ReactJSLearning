@@ -6,12 +6,13 @@ import {ChatList} from "../ChatList";
 import {Messenger} from "../Messenger";
 
 export class Layout extends Component {
+
   render() {
     return (
       <div className="workspace">
         <Header/>
-        <ChatList/>
-        <Messenger/>
+        <ChatList />
+        <Messenger chatId={this.props.match.params}/>
       </div>
     )
   }

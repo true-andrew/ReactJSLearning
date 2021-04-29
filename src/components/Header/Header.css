@@ -1,12 +1,19 @@
 .header {
+    height: 80px;
+    box-sizing: border-box;
+    padding: 1rem;
     grid-area: header;
     background-color: lightskyblue;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .main-heading{
-    margin: 0 0 0 1rem;
     font-family: Roboto, sans-serif;
     color: white;
+}
+
+.profile-icon{
+    transform: scale(1.3);
 }

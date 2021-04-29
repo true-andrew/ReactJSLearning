@@ -11,6 +11,7 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: 'bundle.js',
     },
+    devtool: 'eval-source-map',
     resolve: {
         extensions: ['.js', '.jsx']
     },
@@ -41,6 +42,9 @@ module.exports = {
     ],
     devServer: {
         port: 3000,
-    }
+        historyApiFallback: {
+            index: '/'
+        }
+    },
 };
 
