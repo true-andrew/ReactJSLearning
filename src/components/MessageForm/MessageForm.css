@@ -1,0 +1,12 @@
+.message-form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.message-form > button {
+    margin-top: 10px;
+}
