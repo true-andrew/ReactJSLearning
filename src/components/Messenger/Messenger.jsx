@@ -5,29 +5,77 @@ import React, {Component} from "react";
 import {MessagesList} from "../MessagesList";
 import {MessageForm} from "../MessageForm";
 
+
 export class Messenger extends Component {
   state = {
-    messages: [
-      {text: "Hi, I'm Bot", author: "Robot"}
-    ],
+    chats: {
+      '1': {
+        id: 1,
+        messages: [
+          {text: "Это первый чат", author: 'Robot'}
+        ],
+        chatName: 'First chat'
+      },
+      '2': {
+        id: 2,
+        messages: [
+          {text: "Это второй чат", author: 'Robot'}
+        ],
+        chatName: 'Second chat'
+      },
+      '3': {
+        id: 3,
+        messages: [
+          {text: "Это третий чат", author: 'Robot'}
+        ],
+        chatName: 'Third chat'
+      }
+    },
   };
 
   addNewMessage = (msg) => {
-    this.setState({messages: [...this.state.messages, msg]});
+    const {chats} = this.state;
+    const {chatId} = this.props;
+
+    const chat = chats[chatId.id];
+    chat.messages = this.messages.concat([msg]);
+
+    this.setState({chats: {...this.state.chats, [chatId.id]: chat}});
   }
 
-  componentDidUpdate() {
-    const lastMessage = this.state.messages[this.state.messages.length - 1];
-    if (lastMessage.author !== 'Robot') {
-      this.setState({messages: [...this.state.messages, {text: `Hi, ${lastMessage.author}`, author: 'Robot'}]});
+  get messages() {
+    const {chats} = this.state;
+    const {chatId} = this.props;
+
+    let messages = null;
+    if (chatId && chats[chatId.id]) {
+      messages = chats[chatId.id].messages;
+    }
+
+    return messages;
+  }
+
+  componentDidUpdate(prevProps, prevState, snap) {
+    const {chats} = this.state;
+    const {chatId} = this.props;
+
+    const chat = chats[chatId.id];
+
+    if (this.messages) {
+      const {author} = this.messages[this.messages.length - 1];
+      if (author !== 'Robot') {
+        setTimeout(() => {
+          this.addNewMessage({text: `Hi, ${author}! I'm bot`, author: 'Robot'});
+        }, 1000)
+      }
     }
   };
 
   render() {
     return (
       <div className="messenger">
-        <MessagesList messages={this.state.messages}/>
-        <MessageForm onSend={this.addNewMessage}/>
+        {this.messages ? <MessagesList messages={this.messages}/> : 'Пожалуйста, выберите чат, чтобы продолжить'}
+        {this.messages && <MessageForm onSend={this.addNewMessage}/>}
       </div>
     );
   }
