@@ -1,7 +1,7 @@
 import {handleActions} from 'redux-actions';
 import {fromJS, Map} from 'immutable'
 
-import {load} from "actions/chats";
+import {create, load, send} from "actions/chats";
 
 const initialState = new Map({
   loading: false,
@@ -33,5 +33,22 @@ export const chatsReducer = handleActions({
         chatName: 'Third chat'
       }
     }));
+  },
+  [send]: (state, action) => {
+    const {chatId, ...message} = action.payload;
+    return state.mergeIn(['entries', chatId, 'messages'], message);
+  },
+  [create]: (state, action) => {
+    const chatName = action.payload;
+    const index = state.get('entries').size + 1;
+    return state.mergeIn(['entries', `${index}`], fromJS(
+      {
+        id: index,
+        messages: [{text: `Приветствую в чате ${chatName}`, author: 'Robot'}],
+        chatName: chatName
+      }
+    ));
   }
 }, initialState);
+
+//
