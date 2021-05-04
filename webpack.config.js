@@ -13,7 +13,13 @@ module.exports = {
     },
     devtool: 'eval-source-map',
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+            components: path.resolve(__dirname, 'src', 'components'),
+            actions: path.resolve(__dirname, 'src', 'actions'),
+            reducers: path.resolve(__dirname, 'src', 'reducers'),
+            containers: path.resolve(__dirname, 'src', 'containers')
+        }
     },
     module: {
         rules: [
