@@ -21,9 +21,9 @@ class LayoutContainer extends PureComponent {
   }
 
   render() {
-    const {chats, messages, addChat} = this.props;
+    const {messages} = this.props;
     return (
-      <Layout sendMessage={this.handleMessageSend} messages={messages} chats={chats} addChat={addChat}/>
+      <Layout sendMessage={this.handleMessageSend} messages={messages}/>
     );
   }
 }
@@ -37,7 +37,6 @@ function mapStateToProps(state, ownProps) {
     messages = chats.getIn([match.params.id, 'messages']).toJS();
   }
   return {
-    chats: chats.map((entry) => ({name: entry.get('chatName'), link: `/chat/${entry.get('id')}`})).toList().toJS(),
     messages,
     chatId: match ? match.params.id : null,
   }
@@ -47,7 +46,6 @@ function mapDispatchToProps(dispatch) {
   return {
     loadChats: () => dispatch(load()),
     sendMessage: (message) => dispatch(send(message)),
-    addChat: (chatName) => dispatch(create(chatName))
   }
 }
 

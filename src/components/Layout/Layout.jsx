@@ -2,7 +2,7 @@ import './Layout.css'
 
 import React, {Component} from "react";
 import {Header} from "components/Header";
-import {ChatList} from "components/ChatList";
+import {ChatListRedux} from "containers/ChatListContainer";
 import {Messenger} from "components/Messenger";
 
 export class Layout extends Component {
@@ -10,7 +10,7 @@ export class Layout extends Component {
     return (
       <div className="workspace">
         <Header/>
-        <ChatList chats={this.props.chats} addChat={this.props.addChat}/>
+        <ChatListRedux chats={this.props.chats}/>
         <Messenger messages={this.props.messages} sendMessage={this.props.sendMessage}/>
       </div>
     )
