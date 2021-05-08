@@ -11,19 +11,6 @@ class LayoutContainer extends PureComponent {
     loadChats();
   }
 
-  componentDidUpdate(prevProps, prevState, snap) {
-    const {messages} = this.props;
-    if (messages) {
-      const {author} = messages[messages.length - 1];
-      if (author !== 'Robot') {
-        setTimeout(() => {
-          this.handleMessageSend({text: `Hi, ${author}! I'm bot`, author: 'Robot'});
-        }, 1000)
-      }
-    }
-  };
-
-
   handleMessageSend = (message) => {
     const {sendMessage, chatId} = this.props;
 
