@@ -2,13 +2,18 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 
 import {ChatList} from "components/ChatList";
-import {createChat} from "actions/chats";
+import {createChat, listen} from "actions/chats";
 import {push} from "connected-react-router";
 
 class ChatListContainer extends PureComponent {
   state = {
     input: '',
   };
+
+  componentDidMount() {
+    const {listen} = this.props;
+    listen();
+  }
 
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
@@ -53,7 +58,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     chats: chats.map((entry) => ({
       name: entry.get('chatName'),
-      link: `/chat/${entry.get('id')}`,
+      link: `/chat/${entry.get('_id')}`,
       notification: entry.get('notification')
     })).toList().toJS(),
   }
@@ -64,6 +69,7 @@ const mapDispatchToProps = dispatch => {
   return {
     push: (link) => dispatch(push(link)),
     createChat,
+    listen: () => dispatch(listen()),
   }
 }
 

@@ -3,6 +3,7 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const path = require('path');
+const cors = require('cors');
 
 const Datastore = require('nedb');
 
@@ -17,6 +18,7 @@ const profile = new Datastore({
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/chat', (req, res) => {
   chats.find({}, (err, docs) => {
@@ -70,10 +72,9 @@ io.on('connection', (socket) => {
   });
 
   socket.on('new chat', (body)=>{
-    console.log(body)
-    chats.insert({name: body, messages: []}, (err, newDoc)=>{
-      socket.broadcast.emit('chat message', newDoc);
-      socket.emit('chat message', newDoc);
+    chats.insert({chatName: body, messages: [{author: "Robot", text: `Hello, this is chat ${body}`}]}, (err, newDoc)=>{
+      socket.broadcast.emit('new chat', newDoc);
+      socket.emit('new chat', newDoc);
     });
   });
 

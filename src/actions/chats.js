@@ -8,7 +8,12 @@ export const send = createAction('[Chats] Send');
 export const create = createAction('[Chats] Create');
 export const notify = createAction('[chats] Notify');
 
-export const listen = (dispatch) => () => {
+export const listen = () => (dispatch) => {
+  fetch('http://localhost:3000/chat')
+    .then((response) => response.json())
+    .then((chats) => {
+      dispatch(load(chats));
+    });
   socket.on('new chat', (chat) => {
     dispatch(create(chat));
   });
