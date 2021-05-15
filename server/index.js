@@ -67,25 +67,36 @@ app.post('/profile', (req, res) => {
 io.on('connection', (socket) => {
   console.log('user connected');
 
-  socket.on('disconnect', ()=>{
+  socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 
-  socket.on('new chat', (body)=>{
-    chats.insert({chatName: body, messages: [{author: "Robot", text: `Hello, this is chat ${body}`}]}, (err, newDoc)=>{
+  socket.on('new chat', (body) => {
+    chats.insert({
+      chatName: body,
+      messages: [{author: "Robot", text: `Hello, this is chat ${body}`}]
+    }, (err, newDoc) => {
       socket.broadcast.emit('new chat', newDoc);
       socket.emit('new chat', newDoc);
     });
   });
 
-  socket.on('chat message', (body)=>{
+  socket.on('chat message', (body) => {
     const {chatId, ...message} = body;
-    chats.update({ _id: chatId }, (err, doc)=>{
-      socket.broadcast.emit('chat message', doc);
-      socket.emit('chat message', doc);
+    chats.update({_id: chatId}, {$push: {messages: message}}, {}, () => {
+      socket.broadcast.emit('chat message', body);
+      socket.emit('chat message', body);
+
+      const botMsg = {chatId, author: 'Robot', text: `Hi, ${body.author}! I'm bot from bot.js`};
+      setTimeout(() => {
+        chats.update({_id: chatId}, {$push: {messages: botMsg}}, {}, () => {
+          socket.broadcast.emit('chat message', botMsg);
+          socket.emit('chat message', botMsg);
+        });
+      }, 2000);
     });
-  });
-})
+  })
+});
 
 http.listen(3000, () => {
   console.log('listening on *:3000');

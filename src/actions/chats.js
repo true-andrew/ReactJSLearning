@@ -17,8 +17,15 @@ export const listen = () => (dispatch) => {
   socket.on('new chat', (chat) => {
     dispatch(create(chat));
   });
+  socket.on('chat message', (message) => {
+    dispatch(send(message));
+  })
 }
 
 export const createChat = (chatName) => {
   socket.emit('new chat', chatName);
-}
+};
+
+export const sendMessage = (message) => {
+  socket.emit('chat message', message);
+};

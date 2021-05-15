@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {load, send} from "actions/chats";
+import {sendMessage} from "actions/chats";
 
 import {Layout} from "components/Layout";
 
@@ -36,9 +36,9 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps() {
   return {
-    sendMessage: (message) => dispatch(send(message)),
+    sendMessage,
   }
 }
 

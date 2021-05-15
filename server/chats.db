@@ -1,5 +1,3 @@
-{"chatName":"Chat 1","messages":[{"author":"Robot","text":"Hello, this is chat Chat 1"}],"_id":"gCais50yzypSrP4w"}
-{"chatName":"Chat 2","messages":[{"author":"Robot","text":"Hello, this is chat Chat 2"}],"_id":"HHQ6zgG1t4jT8gbl"}
-{"chatName":"Chat 3","messages":[{"author":"Robot","text":"Hello, this is chat Chat 3"}],"_id":"uhBCmOj38T7clZyV"}
-{"chatName":"Chat 4","messages":[{"author":"Robot","text":"Hello, this is chat Chat 4"}],"_id":"ASWI9skvrMXryuV4"}
-{"chatName":"test","messages":[{"author":"Robot","text":"Hello, this is chat test"}],"_id":"dByFYITkVq6z2aGW"}
+{"chatName":"Chat 1","messages":[{"author":"Robot","text":"Hello, this is chat Chat 1"}],"_id":"c53Xi08kRF3qIrjM"}
+{"chatName":"Chat 1","messages":[{"author":"Robot","text":"Hello, this is chat Chat 1"},{"text":"Hi","author":"Andrew"}],"_id":"c53Xi08kRF3qIrjM"}
+{"chatName":"Chat 1","messages":[{"author":"Robot","text":"Hello, this is chat Chat 1"},{"text":"Hi","author":"Andrew"},{"chatId":"c53Xi08kRF3qIrjM","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"}],"_id":"c53Xi08kRF3qIrjM"}
