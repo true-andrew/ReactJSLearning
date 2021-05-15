@@ -9,41 +9,24 @@ import {IconButton, TextField} from "@material-ui/core";
 import {Link} from "react-router-dom";
 
 export class ChatList extends Component {
-  state = {
-    input: '',
-  };
-
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  handleKeyUp = (event) => {
-    if (event.keyCode === 13) { // Enter
-      this.handleAddChat();
-    }
-  };
-
-  handleAddChat = () => {
-    if (this.state.input.length > 0) {
-      this.props.addChat(this.state.input);
-      this.setState({ input: '' });
-    }
-  };
-
   render() {
-    const { chats } = this.props;
+    const { chats, input, addChat, handleChange, handleKeyUp, handleNavigate } = this.props;
     return (
       <List component="nav" aria-label="contacts">
         {chats.map((chat, idx)=>
-          <Link to={chat.link} className="link" key={idx}>
-            <ListItem button>
-              <ListItemText primary={chat.name} />
-            </ListItem>
-          </Link>
+
+            <div key={idx} className={chat.notification ? "chat-link": ""}>
+              <ListItem button onClick={()=>{
+                handleNavigate(chat.link)
+              }}>
+                <ListItemText primary={chat.name} />
+              </ListItem>
+            </div>
+
         )}
         <ListItem>
-          <TextField id="newChat" type="text" name='input' label='New chat' onChange={this.handleChange} onKeyUp={this.handleKeyUp} value={this.state.input}/>
-          <IconButton color='primary' onClick={this.handleAddChat}>
+          <TextField id="newChat" type="text" name='input' label='New chat' onChange={handleChange} onKeyUp={handleKeyUp} value={input}/>
+          <IconButton color='primary' onClick={addChat}>
             <AddCircleIcon fontSize='large'/>
           </IconButton>
         </ListItem>
