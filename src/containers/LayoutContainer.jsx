@@ -1,13 +1,14 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {create, load, send} from "actions/chats";
+import {listen, load, send} from "actions/chats";
 
 import {Layout} from "components/Layout";
 
 class LayoutContainer extends PureComponent {
   componentDidMount() {
-    const {loadChats} = this.props;
+    const {loadChats, listen} = this.props;
 
+    listen();
     loadChats();
   }
 
@@ -46,6 +47,7 @@ function mapDispatchToProps(dispatch) {
   return {
     loadChats: () => dispatch(load()),
     sendMessage: (message) => dispatch(send(message)),
+    listen: () => dispatch(listen()),
   }
 }
 

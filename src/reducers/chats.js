@@ -55,5 +55,3 @@ export const chatsReducer = handleActions({
     return state.mergeIn(['entries', `${chatId}`], fromJS({notification}));
   }
 }, initialState);
-
-//
