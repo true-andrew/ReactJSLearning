@@ -7,6 +7,7 @@ export const load = createAction('[Chats] Load');
 export const send = createAction('[Chats] Send');
 export const create = createAction('[Chats] Create');
 export const notify = createAction('[chats] Notify');
+export const remove = createAction('[chats] Remove');
 
 export const listen = () => (dispatch) => {
   fetch('http://localhost:3000/chat')
@@ -21,6 +22,14 @@ export const listen = () => (dispatch) => {
     dispatch(send(message));
   })
 }
+
+export const removeChat = (chatId) => (dispatch) => {
+  fetch(`http://localhost:3000/chat/${chatId}`, {
+    method: 'DELETE'
+  }).then(() => {
+    dispatch(remove(chatId));
+  });
+};
 
 export const createChat = (chatName) => {
   socket.emit('new chat', chatName);

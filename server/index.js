@@ -38,6 +38,16 @@ app.get('/profile', (req, res) => {
   })
 });
 
+app.delete('/chat/:id', (req, res)=>{
+  chats.remove({_id: req.params.id}, (err) => {
+    if (err) {
+      return res.status(500).json({message: 'Error while deleting'});
+    }
+
+    res.json({message: 'Successful deleting'});
+  })
+})
+
 app.post('/profile', (req, res) => {
   profile.findOne({}, (err, doc) => {
     if (err) {
@@ -87,7 +97,7 @@ io.on('connection', (socket) => {
       socket.broadcast.emit('chat message', body);
       socket.emit('chat message', body);
 
-      const botMsg = {chatId, author: 'Robot', text: `Hi, ${body.author}! I'm bot from bot.js`};
+      const botMsg = {chatId, author: 'Robot', text: `Hi, ${body.author}! I'm bot`};
       setTimeout(() => {
         chats.update({_id: chatId}, {$push: {messages: botMsg}}, {}, () => {
           socket.broadcast.emit('chat message', botMsg);

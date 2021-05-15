@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 
 import {ChatList} from "components/ChatList";
-import {createChat, listen} from "actions/chats";
+import {createChat, removeChat, listen} from "actions/chats";
 import {push} from "connected-react-router";
 
 class ChatListContainer extends PureComponent {
@@ -33,6 +33,11 @@ class ChatListContainer extends PureComponent {
     }
   };
 
+  handleRemoveChat = (chatId) => () => {
+    const {removeChat} = this.props;
+    removeChat(chatId);
+  };
+
   handleNavigate = (link) => {
     const {push} = this.props;
     push(link);
@@ -42,6 +47,7 @@ class ChatListContainer extends PureComponent {
     const {chats} = this.props;
     return (
       <ChatList addChat={this.handleAddChat}
+                removeChat = {this.handleRemoveChat}
                 chats={chats}
                 input={this.state.input}
                 handleChange={this.handleChange}
@@ -56,9 +62,9 @@ const mapStateToProps = (state, ownProps) => {
   const chats = state.chats.get('entries');
 
   return {
-    chats: chats.map((entry) => ({
+    chats: chats.sortBy((entry) => -entry.get('timestamp')).map((entry) => ({
       name: entry.get('chatName'),
-      link: `/chat/${entry.get('_id')}`,
+      chatId: entry.get('_id'),
       notification: entry.get('notification')
     })).toList().toJS(),
   }
@@ -70,6 +76,7 @@ const mapDispatchToProps = dispatch => {
     push: (link) => dispatch(push(link)),
     createChat,
     listen: () => dispatch(listen()),
+    removeChat: (chatId) => dispatch(removeChat(chatId))
   }
 }
 
