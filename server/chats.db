@@ -1,0 +1,18 @@
+{"chatName":"test","messages":[{"author":"Robot","text":"Hello, this is chat test"}],"_id":"LZpevvsELXxR77oU"}
+{"chatName":"Chat 1","messages":[{"author":"Robot","text":"Hello, this is chat Chat 1"},{"text":"Hi","author":"Andrew"},{"chatId":"c53Xi08kRF3qIrjM","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"}],"_id":"c53Xi08kRF3qIrjM"}
+{"chatName":"test","messages":[{"author":"Robot","text":"Hello, this is chat test"}],"_id":"p9GFPDCyDAGiMOCJ"}
+{"$$deleted":true,"_id":"LZpevvsELXxR77oU"}
+{"chatName":"Chat 2","messages":[{"author":"Robot","text":"Hello, this is chat Chat 2"}],"_id":"QVKfRW1t40mFOJvC"}
+{"$$deleted":true,"_id":"p9GFPDCyDAGiMOCJ"}
+{"$$deleted":true,"_id":"QVKfRW1t40mFOJvC"}
+{"chatName":"Chat 2","messages":[{"author":"Robot","text":"Hello, this is chat Chat 2"}],"_id":"nQFxixxkmCChiZNG"}
+{"chatName":"Chat 3","messages":[{"author":"Robot","text":"Hello, this is chat Chat 3"}],"_id":"LrO5wqo2s9j8YMSy"}
+{"chatName":"Chat 4","messages":[{"author":"Robot","text":"Hello, this is chat Chat 4"}],"_id":"uOOgu9LI5qLPkRtS"}
+{"chatName":"Chat 4","messages":[{"author":"Robot","text":"Hello, this is chat Chat 4"},{"text":"HEEEEELO","author":"Andrew"}],"_id":"uOOgu9LI5qLPkRtS"}
+{"chatName":"Chat 4","messages":[{"author":"Robot","text":"Hello, this is chat Chat 4"},{"text":"HEEEEELO","author":"Andrew"},{"chatId":"uOOgu9LI5qLPkRtS","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"}],"_id":"uOOgu9LI5qLPkRtS"}
+{"chatName":"Chat 4","messages":[{"author":"Robot","text":"Hello, this is chat Chat 4"},{"text":"HEEEEELO","author":"Andrew"},{"chatId":"uOOgu9LI5qLPkRtS","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"},{"text":"1","author":"Andrew"}],"_id":"uOOgu9LI5qLPkRtS"}
+{"chatName":"Chat 4","messages":[{"author":"Robot","text":"Hello, this is chat Chat 4"},{"text":"HEEEEELO","author":"Andrew"},{"chatId":"uOOgu9LI5qLPkRtS","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"},{"text":"1","author":"Andrew"},{"chatId":"uOOgu9LI5qLPkRtS","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"}],"_id":"uOOgu9LI5qLPkRtS"}
+{"chatName":"Chat 2","messages":[{"author":"Robot","text":"Hello, this is chat Chat 2"},{"text":"000","author":"Andrew"}],"_id":"nQFxixxkmCChiZNG"}
+{"chatName":"Chat 2","messages":[{"author":"Robot","text":"Hello, this is chat Chat 2"},{"text":"000","author":"Andrew"},{"chatId":"nQFxixxkmCChiZNG","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"}],"_id":"nQFxixxkmCChiZNG"}
+{"chatName":"Chat 1","messages":[{"author":"Robot","text":"Hello, this is chat Chat 1"},{"text":"Hi","author":"Andrew"},{"chatId":"c53Xi08kRF3qIrjM","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"},{"text":"давно не виделись","author":"Andrew"}],"_id":"c53Xi08kRF3qIrjM"}
+{"chatName":"Chat 1","messages":[{"author":"Robot","text":"Hello, this is chat Chat 1"},{"text":"Hi","author":"Andrew"},{"chatId":"c53Xi08kRF3qIrjM","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"},{"text":"давно не виделись","author":"Andrew"},{"chatId":"c53Xi08kRF3qIrjM","author":"Robot","text":"Hi, Andrew! I'm bot from bot.js"}],"_id":"c53Xi08kRF3qIrjM"}

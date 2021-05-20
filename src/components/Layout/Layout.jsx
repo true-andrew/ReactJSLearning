@@ -10,7 +10,7 @@ export class Layout extends Component {
     return (
       <div className="workspace">
         <Header/>
-        <ChatListRedux chats={this.props.chats}/>
+        <ChatListRedux/>
         <Messenger messages={this.props.messages} sendMessage={this.props.sendMessage}/>
       </div>
     )

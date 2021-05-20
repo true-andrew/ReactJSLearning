@@ -1,7 +1,7 @@
 import {handleActions} from 'redux-actions';
 import {fromJS, Map} from 'immutable'
 
-import {create, load, notify, send} from "actions/chats";
+import {create, load, notify, send, remove} from "actions/chats";
 
 const initialState = new Map({
   loading: false,
@@ -10,50 +10,26 @@ const initialState = new Map({
 
 export const chatsReducer = handleActions({
   [load]: (state, action) => {
-    return state.set('entries', fromJS({
-      '1': {
-        id: 1,
-        messages: [
-          {text: "Это первый чат", author: 'Robot'}
-        ],
-        chatName: 'First chat'
-      },
-      '2': {
-        id: 2,
-        messages: [
-          {text: "Это второй чат", author: 'Robot'}
-        ],
-        chatName: 'Second chat'
-      },
-      '3': {
-        id: 3,
-        messages: [
-          {text: "Это третий чат", author: 'Robot'}
-        ],
-        chatName: 'Third chat'
-      }
-    }));
+    const entries = action.payload.reduce((acc, item) => {
+      acc[item._id] = {...item, timestamp: new Date()};
+      return acc;
+    }, {});
+    return state.set('entries', fromJS(entries));
   },
   [send]: (state, action) => {
     const {chatId, ...message} = action.payload;
-    return state.mergeIn(['entries', chatId, 'messages'], message);
+    return state.mergeIn(['entries', chatId, 'messages'], message).setIn(['entries', chatId, 'timestamp'], new Date());
   },
   [create]: (state, action) => {
-    const chatName = action.payload;
-    const index = state.get('entries').size + 1;
-    return state.mergeIn(['entries', `${index}`], fromJS(
-      {
-        id: index,
-        messages: [{text: `Приветствую в чате ${chatName}`, author: 'Robot'}],
-        chatName: chatName
-      }
-    ));
+    const {_id} = action.payload;
+    return state.mergeIn(['entries', _id], fromJS({...action.payload, timestamp: new Date()}));
   },
   [notify]: (state, action) => {
     console.log(action.payload)
     const {chatId, notification} = action.payload;
     return state.mergeIn(['entries', `${chatId}`], fromJS({notification}));
+  },
+  [remove]: (state, action) => {
+    return state.removeIn(['entries', action.payload]);
   }
 }, initialState);
-
-//

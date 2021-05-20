@@ -1,16 +1,10 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {create, load, send} from "actions/chats";
+import {sendMessage} from "actions/chats";
 
 import {Layout} from "components/Layout";
 
 class LayoutContainer extends PureComponent {
-  componentDidMount() {
-    const {loadChats} = this.props;
-
-    loadChats();
-  }
-
   handleMessageSend = (message) => {
     const {sendMessage, chatId} = this.props;
 
@@ -42,10 +36,9 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps() {
   return {
-    loadChats: () => dispatch(load()),
-    sendMessage: (message) => dispatch(send(message)),
+    sendMessage,
   }
 }
 
